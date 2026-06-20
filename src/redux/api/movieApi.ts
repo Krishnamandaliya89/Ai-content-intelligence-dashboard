@@ -8,8 +8,7 @@ import type { TmdbApiParams } from "@/types/api.types";
 export const movieApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getTrendingMovies: builder.query<RawTmdbResponse, TmdbApiParams>({
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      queryFn: async (arg, queryApi, extraOptions, baseQuery) => {
+      queryFn: async (arg) => {
         const url = new URL(`${API_CONFIG.TMDB.BASE_URL}/trending/movie/day`);
         url.searchParams.append("api_key", API_CONFIG.TMDB.KEY);
         url.searchParams.append("language", arg.language || "en-US");
@@ -20,8 +19,9 @@ export const movieApi = baseApi.injectEndpoints({
           const data = await result.json();
           if (!result.ok) throw new Error(data.status_message || "Failed to fetch movies");
           return { data };
-        } catch (error: any) {
-          return { error: { status: "CUSTOM_ERROR", error: error.message } };
+        } catch (error) {
+          const errMsg = error instanceof Error ? error.message : "Failed to fetch movies";
+          return { error: { status: "CUSTOM_ERROR", error: errMsg } };
         }
       },
       providesTags: ["Movies"],

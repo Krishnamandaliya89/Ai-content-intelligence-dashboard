@@ -8,7 +8,7 @@ import type { SocialApiParams } from "@/types/api.types";
 export const socialApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSocialPosts: builder.query<RawSocialPost[], SocialApiParams>({
-      queryFn: async (arg) => {
+      queryFn: async () => {
         // Mocking an API call
         return new Promise((resolve) => {
           setTimeout(() => {

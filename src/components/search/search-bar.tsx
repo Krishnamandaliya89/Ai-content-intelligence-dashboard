@@ -7,21 +7,32 @@ import { useDebounce } from "@/hooks/use-debounce";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 export function SearchBar() {
   const dispatch = useAppDispatch();
   const initialQuery = useSelectorTyped((state) => state.search.query);
   const [localQuery, setLocalQuery] = useState(initialQuery);
   const debouncedQuery = useDebounce(localQuery, 500);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLocalQuery(initialQuery);
+  }, [initialQuery]);
 
   useEffect(() => {
     dispatch(setSearchQuery(debouncedQuery));
     if (debouncedQuery.trim()) {
       dispatch(setIsSearching(true));
+      if (pathname !== "/") {
+        router.push("/");
+      }
     } else {
       dispatch(setIsSearching(false));
     }
-  }, [debouncedQuery, dispatch]);
+  }, [debouncedQuery, dispatch, pathname, router]);
 
   return (
     <div className="relative w-full max-w-md">

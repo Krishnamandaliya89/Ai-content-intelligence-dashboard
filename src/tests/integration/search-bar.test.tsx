@@ -6,6 +6,12 @@ jest.mock("@/hooks/use-app-dispatch");
 jest.mock("@/hooks/use-app-selector", () => ({
   useAppSelector: jest.fn(() => "")
 }));
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
+  usePathname: () => "/",
+}));
 
 describe("SearchBar", () => {
   it("dispatches actions on input change (with debounce logic mock)", async () => {

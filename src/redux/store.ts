@@ -8,6 +8,24 @@ import themeReducer from "./slices/themeSlice";
 import searchReducer from "./slices/searchSlice";
 import feedReducer from "./slices/feedSlice";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const localStorageMiddleware = (storeApi: any) => (next: any) => (action: any) => {
+  const result = next(action);
+  if (typeof window !== "undefined") {
+    const state = storeApi.getState();
+    if (action.type.startsWith("favorites/")) {
+      window.localStorage.setItem("favorites", JSON.stringify(state.favorites.items));
+    }
+    if (action.type.startsWith("preferences/")) {
+      window.localStorage.setItem("preferences", JSON.stringify(state.preferences));
+    }
+    if (action.type.startsWith("feed/")) {
+      window.localStorage.setItem("feedOrder", JSON.stringify(state.feed.order));
+    }
+  }
+  return result;
+};
+
 export const makeStore = () => {
   return configureStore({
     reducer: {
@@ -19,7 +37,7 @@ export const makeStore = () => {
       feed: feedReducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(baseApi.middleware),
+      getDefaultMiddleware().concat(baseApi.middleware, localStorageMiddleware),
   });
 };
 

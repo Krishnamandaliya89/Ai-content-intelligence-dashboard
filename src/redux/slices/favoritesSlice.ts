@@ -32,8 +32,11 @@ export const favoritesSlice = createSlice({
         state.items.push(action.payload);
       }
     },
+    setFavorites: (state, action: PayloadAction<FeedItem[]>) => {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { addFavorite, removeFavorite, toggleFavorite } = favoritesSlice.actions;
+export const { addFavorite, removeFavorite, toggleFavorite, setFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

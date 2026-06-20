@@ -4,7 +4,7 @@ import { AppLogo } from "../common/app-logo";
 import { UserAvatar } from "../common/user-avatar";
 import { ThemeToggle } from "../settings/theme-toggle";
 import { MobileNav } from "./mobile-nav";
-import { Button } from "../ui/button";
+import { SearchBar } from "../search/search-bar";
 
 export function AppHeader() {
   return (
@@ -14,11 +14,8 @@ export function AppHeader() {
         <AppLogo />
       </div>
       <div className="flex items-center gap-4">
-        {/* Search placeholder */}
-        <div className="hidden md:block">
-          <Button variant="outline" size="sm" className="text-gray-500 w-64 justify-start">
-            Search content...
-          </Button>
+        <div className="hidden md:block w-64">
+          <SearchBar />
         </div>
         <ThemeToggle />
         <UserAvatar />

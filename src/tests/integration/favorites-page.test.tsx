@@ -1,13 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import FavoritesPage from "@/app/(dashboard)/favorites/page";
-import * as hooks from "@/hooks/use-app-selector";
+import * as selectorHooks from "@/hooks/use-app-selector";
+import * as dispatchHooks from "@/hooks/use-app-dispatch";
 
 // Mock hooks
 jest.mock("@/hooks/use-app-selector");
+jest.mock("@/hooks/use-app-dispatch");
 
 describe("FavoritesPage", () => {
+  beforeEach(() => {
+    jest.spyOn(dispatchHooks, "useAppDispatch").mockReturnValue(jest.fn());
+  });
+
   it("renders empty state when no favorites exist", () => {
-    jest.spyOn(hooks, "useAppSelector").mockReturnValue([]);
+    jest.spyOn(selectorHooks, "useAppSelector").mockReturnValue([]);
     
     render(<FavoritesPage />);
     
@@ -16,7 +22,7 @@ describe("FavoritesPage", () => {
   });
 
   it("renders list when favorites exist", () => {
-    jest.spyOn(hooks, "useAppSelector").mockReturnValue([
+    jest.spyOn(selectorHooks, "useAppSelector").mockReturnValue([
       { id: "1", title: "Test Fav", type: "news", description: "Desc" }
     ]);
     

@@ -6,7 +6,6 @@ import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { setFeedOrder } from "@/redux/slices/feedSlice";
 import { useAppSelector as useSelectorTyped } from "@/hooks/use-app-selector";
 import { GripVertical } from "lucide-react";
-import type { FeedItemType } from "@/types/feed.types";
 
 export function DraggableFeed() {
   const dispatch = useAppDispatch();
@@ -23,6 +22,7 @@ export function DraggableFeed() {
   // Ensure hydration match for drag-and-drop
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
