@@ -1,6 +1,6 @@
 # AI Content Intelligence Dashboard — PG-AGI Intern Assignment
 
-A production-quality, personalized dashboard built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**, **Redux Toolkit**, and **RTK Query** to aggregate multi-source feeds into a single customizable interface.
+A production-quality, personalized dashboard built with **Next.js 16 (App Router)**, **JavaScript (ES6+)**, **Tailwind CSS v4**, **Redux Toolkit**, and **RTK Query** to aggregate multi-source feeds into a single customizable interface.
 
 This project was built to satisfy the Software Development Engineer (SDE) Intern Frontend Assignment requirements for **PG-AGI**.
 
@@ -15,7 +15,7 @@ This project was built to satisfy the Software Development Engineer (SDE) Intern
 - Persisted **Dark Mode / Light Mode** theme configuration using `next-themes` (free of hydration flashes).
 
 ### 2. Multi-Source Feed Aggregation
-- **Unified Feed Model (`FeedItem`):** Disjoint content formats from external APIs and mocks are normalized into a unified schema, making search, rendering, and drag-and-drop ordering highly reusable.
+- **Unified Feed Model:** Disjoint content formats from external APIs and mocks are normalized into a unified schema, making search, rendering, and drag-and-drop ordering highly reusable.
 - **News Feed:** Fetches top-headlines and category-filtered articles in real-time from the **News API**.
 - **Movie Recommendations:** Fetches trending TMDB movies in real-time.
 - **Social Buzz:** Mock social feed displaying mock likes, comments, and tags.
@@ -50,8 +50,8 @@ This project was built to satisfy the Software Development Engineer (SDE) Intern
 
 ```
 src/
-├── app/               # Next.js App Router root layouts, providers, and dashboard pages
-├── components/        # Presentational and state-connected visual components
+├── app/               # Next.js App Router root layouts, providers, and dashboard pages (.js/.jsx)
+├── components/        # Presentational and state-connected visual components (.js/.jsx)
 │   ├── cards/         # Unified FeedCard rendering news, movies, and social layout types
 │   ├── feed/          # Aggregated personalized grid sections and Draggable DnD reorder logic
 │   ├── layout/        # Shell layout templates (app-header, app-sidebar, mobile-nav)
@@ -61,9 +61,8 @@ src/
 ├── constants/         # Category definitions, theme modes, and route paths
 ├── hooks/             # Custom React Hooks (useDebounce, useFeedData, useThemeConfig, Redux helpers)
 ├── providers/         # Global provider mounts (Redux and next-themes)
-├── redux/             # Redux state configuration (store.ts, Slices, and RTK Query endpoints)
+├── redux/             # Redux state configuration (store.js, Slices, and RTK Query endpoints)
 ├── tests/             # Jest tests (unit/ slices tests and component integration tests)
-├── types/             # Common domain type schemas (feed types, api arguments, preferences)
 └── utils/             # Formatters, localStorage storage wrappers, and mock social data
 ```
 

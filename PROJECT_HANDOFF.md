@@ -7,7 +7,8 @@
 **Project Name:** AI Content Intelligence Dashboard
 **Assignment Context:** PG-AGI Software Development Engineer (SDE) Intern Frontend Assignment
 **Role Target:** Frontend / SDE Intern
-**Project Goal:** Build a personalized content dashboard that aggregates **news**, **movie recommendations**, and **social posts** into a single customizable experience using **Next.js, TypeScript, Redux Toolkit, RTK Query, API integration, and testing**.
+**Project Goal:** Build a personalized content dashboard that aggregates **news**, **movie recommendations**, and **social posts** into a single customizable experience using **Next.js, JavaScript, Redux Toolkit, RTK Query, API integration, and testing**.
+**Technology Stack:** Now converted to pure JavaScript to align perfectly with ES6+ candidate profile.
 
 This project was intentionally positioned as **“AI Content Intelligence Dashboard”** rather than a generic “Personalized Content Dashboard” to better align with **PG-AGI’s AI-focused brand** while still fulfilling the assignment requirements.
 
@@ -17,7 +18,7 @@ This project was intentionally positioned as **“AI Content Intelligence Dashbo
 
 ### Overall Status
 
-**Submission-ready**
+**Submission-ready (Pure JavaScript Stack)**
 
 ### Current State
 
@@ -66,7 +67,7 @@ Per assignment scope and time constraints, the following were **not** implemente
 
 * **Next.js 16** (App Router)
 * **React**
-* **TypeScript**
+* **JavaScript (ES6+)**
 
 ### Styling / UI
 
@@ -310,7 +311,7 @@ Redux Toolkit and RTK Query setup:
 
 Custom hooks for:
 
-* typed Redux access
+* Redux access
 * theme config
 * debouncing
 * feed aggregation / transformations
@@ -319,10 +320,6 @@ Custom hooks for:
 ### `src/services/` and/or `src/lib/`
 
 API clients, transformation helpers, and data access utilities.
-
-### `src/types/`
-
-Shared TypeScript types and domain models.
 
 ### `src/utils/`
 
@@ -670,7 +667,7 @@ If this project were extended beyond the internship assignment, the next improve
 This project was built to satisfy the PG-AGI frontend assignment with an emphasis on:
 
 * clean architecture
-* strong TypeScript / Redux foundations
+* strong JavaScript / Redux foundations
 * realistic dashboard UX
 * API integration + testing discipline
 * thoughtful personalization features
